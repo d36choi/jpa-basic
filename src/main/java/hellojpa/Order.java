@@ -1,5 +1,6 @@
 package hellojpa;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Column;
@@ -9,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -26,6 +28,25 @@ public class Order {
 
   @OneToMany(mappedBy = "order")
   private List<OrderItem> orderItems = new ArrayList<>();
+
+  @OneToOne
+  @JoinColumn(name = "DELIVERY_ID")
+  private Delivery delivery;
+
+  @Column(name = "ORDERDATE")
+  private LocalDate orderDate;
+
+  public void setOrderItems(List<OrderItem> orderItems) {
+    this.orderItems = orderItems;
+  }
+
+  public Delivery getDelivery() {
+    return delivery;
+  }
+
+  public void setDelivery(Delivery delivery) {
+    this.delivery = delivery;
+  }
 
   public List<OrderItem> getOrderItems() {
     return orderItems;

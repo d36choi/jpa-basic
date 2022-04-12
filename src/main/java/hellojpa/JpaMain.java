@@ -1,6 +1,10 @@
 package hellojpa;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.PriorityQueue;
+import java.util.Queue;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
@@ -18,11 +22,7 @@ public class JpaMain {
     tx.begin();
     try {
 
-      Order order = new Order();
-      final OrderItem orderItem = new OrderItem();
-      order.addOrderItem(orderItem);
-      em.persist(orderItem);
-      em.persist(order);
+
       tx.commit();
 
     } catch (Exception e) {

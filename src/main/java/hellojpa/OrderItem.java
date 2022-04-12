@@ -32,6 +32,8 @@ public class OrderItem {
   @JoinColumn(name = "ITEM_ID")
   private Item item;
 
+  @Column(name = "COUNT")
+  private Long count;
 
   public Long getId() {
     return id;
