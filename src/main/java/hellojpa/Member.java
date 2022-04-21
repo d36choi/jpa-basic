@@ -20,9 +20,10 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-public class Member {
+public class Member extends BaseEntity {
 
-  @Id @GeneratedValue
+  @Id
+  @GeneratedValue
   @Column(name = "MEMBER_ID")
   private Long id;
 
