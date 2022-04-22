@@ -1,10 +1,15 @@
 package hellojpa;
 
+import static javax.persistence.CascadeType.*;
+import static javax.persistence.FetchType.LAZY;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -22,14 +27,14 @@ public class Order  extends BaseEntity {
   @Column(name = "ORDER_ID")
   private Long id;
 
-  @ManyToOne
+  @ManyToOne(fetch = LAZY)
   @JoinColumn(name = "MEMBER_ID")
   private Member member;
 
-  @OneToMany(mappedBy = "order")
+  @OneToMany(mappedBy = "order", cascade = ALL)
   private List<OrderItem> orderItems = new ArrayList<>();
 
-  @OneToOne
+  @OneToOne(fetch = LAZY, cascade = ALL)
   @JoinColumn(name = "DELIVERY_ID")
   private Delivery delivery;
 

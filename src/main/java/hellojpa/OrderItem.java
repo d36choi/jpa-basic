@@ -1,5 +1,7 @@
 package hellojpa;
 
+import static javax.persistence.FetchType.LAZY;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -21,14 +23,14 @@ public class OrderItem {
 //  private Long orderId;
 //  필요없어짐 아래의 조인덕분
 
-  @ManyToOne
+  @ManyToOne(fetch = LAZY)
   @JoinColumn(name = "ORDER_ID")
   private Order order;
 
 //  @Column(name = "ITEM_ID")
 //  private Long itemId;
 
-  @ManyToOne
+  @ManyToOne(fetch = LAZY)
   @JoinColumn(name = "ITEM_ID")
   private Item item;
 
